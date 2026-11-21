@@ -1,0 +1,16 @@
+# OS / editor noise
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+
+# Local test artifacts
+.taste-skill/
+__pycache__/
+*.pyc
+
+# Do not commit unrelated OneDrive folders
+/AeroTV/
+/CleanFrame/
+/internship-automation/
+/SamsungRemote/

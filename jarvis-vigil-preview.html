@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>VIGIL — Jarvis desktop sentinel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="jarvis-vigil.css" />
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wordmark">Jarvis<span class="wordmark-dot">.</span></div>
+  <p class="head-note">Desktop sentinel</p>
+  <div class="head-live"><span class="live-dot" aria-hidden="true"></span>Live preview</div>
+</header>
+
+<main class="layout">
+
+  <section class="intro" aria-labelledby="title">
+    <h1 id="title">VIGIL</h1>
+    <p class="lede">
+      A full-body sentinel for the Jarvis agent. It keeps watch while you work,
+      perches on the edge of a window, and powers down when the day is done.
+    </p>
+  </section>
+
+  <section class="bay" aria-labelledby="bayTitle">
+    <div class="bay-stage">
+      <div class="bay-bar bay-bar-top">
+        <h2 class="bay-title" id="bayTitle"><span class="live-dot" aria-hidden="true"></span>Live rig</h2>
+        <span class="bay-hint">Drag to orbit</span>
+      </div>
+
+      <div class="bay-view" id="bayView">
+        <canvas id="scene" aria-hidden="true">VIGIL, an armored full-body sentinel with a cyan visor and chest core.</canvas>
+        <div class="bay-loading" id="bayLoading">Loading the live model</div>
+      </div>
+
+      <div class="bay-bar bay-bar-bottom">
+        <div class="readout" aria-live="polite">
+          <div class="readout-head">
+            <span class="state-dot" id="stateDot" aria-hidden="true"></span>
+            <span class="state-label" id="stateLabel">Idle</span>
+          </div>
+          <p class="state-note" id="stateNote">Standing by. Watching the desktop.</p>
+        </div>
+        <div class="core-readout"><span id="coreValue">100%</span><span class="core-word">core</span></div>
+      </div>
+    </div>
+    <p class="bay-caption"><strong>Live study.</strong> The Windows runtime will ship pre-rendered frames, so the always-on overlay stays under 50&nbsp;MB of RAM.</p>
+  </section>
+
+  <div class="controls">
+    <section class="behaviour" aria-labelledby="behaviourTitle">
+      <h2 id="behaviourTitle">Behaviour</h2>
+      <div class="state-grid" id="states" role="group" aria-label="VIGIL behaviour">
+        <button class="state-btn is-active" type="button" data-state="idle" aria-pressed="true">Idle</button>
+        <button class="state-btn" type="button" data-state="walk" aria-pressed="false">Walk</button>
+        <button class="state-btn" type="button" data-state="watch" aria-pressed="false">Watch</button>
+        <button class="state-btn" type="button" data-state="sit" aria-pressed="false">Sit</button>
+        <button class="state-btn" type="button" data-state="work" aria-pressed="false">Work</button>
+        <button class="state-btn" type="button" data-state="rest" aria-pressed="false">Rest</button>
+        <button class="state-btn" type="button" data-state="blocked" aria-pressed="false">Blocked</button>
+        <button class="state-btn" type="button" data-state="error" aria-pressed="false">Error</button>
+        <button class="state-btn" type="button" data-state="done" aria-pressed="false">Done</button>
+      </div>
+    </section>
+
+    <section class="assignment" aria-labelledby="assignmentTitle">
+      <h2 id="assignmentTitle">Current assignment</h2>
+      <div class="assignment-card">
+        <div class="assignment-top">
+          <p class="assignment-name">Jarvis Dashboard</p>
+          <span class="assignment-pct">38%</span>
+        </div>
+        <p class="assignment-meta">Dashboard shell, then verification. A checkpoint is saved after every step.</p>
+        <div class="progress" role="progressbar" aria-label="Jarvis Dashboard progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="38">
+          <span class="progress-fill"></span>
+        </div>
+        <p class="assignment-step">3 of 8 checks</p>
+      </div>
+    </section>
+  </div>
+
+</main>
+
+<footer class="site-foot">
+  <p>Original character for Jarvis. Controlled from Telegram, rendered on Windows.</p>
+  <p>Concept study · 2026</p>
+</footer>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script>
+  window.setTimeout(function () {
+    if (window.__vigilReady) return;
+    var el = document.getElementById('bayLoading');
+    if (el) el.textContent = 'The live model did not load. Check the connection and refresh.';
+  }, 12000);
+</script>
+<script type="module" src="jarvis-vigil.js"></script>
+</body>
+</html>
